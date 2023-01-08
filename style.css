@@ -1,0 +1,128 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    position: relative;
+    background: url("image/pranjall-kumar-sejqj6Eaqe8-unsplash.jpg") no-repeat fixed center;
+    background-size: 100% 100%;
+}
+.sidebar{
+    background: rgba(218, 82, 82, 0.6);
+    position: absolute;
+    top: 77px;
+    right: 0;
+    width: 0;
+    height: 100%;
+    z-index: 1;
+    transition: 1s ease-in-out;
+}
+.header {
+    padding: 15px;
+    color: wheat;
+    background-color: rgb(170, 54, 54);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo img {
+    width: 45px;
+    height: 45px;
+    padding: 5px;
+}
+
+.search {
+    width: 35%;
+}
+
+.search input {
+    width: 75%;
+    color: white;
+    padding: 14px;
+    border: 1px solid black;
+    border-radius: 40px 0 0 40px;
+    background-color: transparent;
+}
+.search button {
+    padding: 14px;
+    margin-left: -3px;
+    color: white;
+    background-color: #a44848;
+    border: 1px solid black;
+    border-radius: 0 40px 40px 0;
+}
+
+::placeholder {
+    color: rgb(192, 189, 189);
+    opacity: 1;
+}
+
+.container{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    margin: 0 10%;
+}
+.box{
+    width: 30%;
+    margin: 7px;
+    position: relative;
+    text-align: center;
+    background-color: rgb(202 176 131);
+}
+.box img{
+    width: 100%;
+    height: 100%;
+}
+
+.heading{
+    position: absolute;
+    padding: 10px;
+    bottom: 70px;
+    background: rgba(0, 0, 0, 0.5);
+    color: #f1f1f1;
+    width: 100%;
+}
+.detail{
+    display: none;
+    transition: 1s;
+}
+.box:hover .detail{
+    display: block;
+   
+}
+.button-box{
+    display: flex;
+    margin: 5px;
+    justify-content:space-between;
+}
+.btn{
+    color: rgb(71, 68, 68);
+    cursor: pointer;
+    font-size: 1.1rem;
+    margin:5px 0;
+    padding: 5px;
+    background: transparent;
+    border: 1px solid rgb(231, 223, 223);
+}
+.icon{
+    border: none;
+    font-size: 1.5rem;
+    border-radius: 50%;
+}
+/* .icon:hover{
+    font-size: 2rem;
+} */
+.btn:hover{
+    background-color: #a44848;
+    color: antiquewhite;
+}
