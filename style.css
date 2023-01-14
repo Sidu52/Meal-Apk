@@ -1,24 +1,20 @@
+/* UniverSal Stylling */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
+/* Styly apply on full body */
 body{
     position: relative;
     background: url("image/pranjall-kumar-sejqj6Eaqe8-unsplash.jpg") no-repeat fixed center;
     background-size: 100% 100%;
 }
-.sidebar{
-    background: rgba(218, 82, 82, 0.6);
-    position: absolute;
-    top: 77px;
-    right: 0;
-    width: 0;
-    height: 100%;
-    z-index: 1;
-    transition: 1s ease-in-out;
-}
+/* Header (Navigation-Bar) Stylling  */
 .header {
+    position: sticky;
+    top: 0;
+    z-index: 1;
     padding: 15px;
     color: wheat;
     background-color: rgb(170, 54, 54);
@@ -32,17 +28,16 @@ body{
     justify-content: center;
     align-items: center;
 }
-
 .logo img {
     width: 45px;
     height: 45px;
     padding: 5px;
 }
 
+/* Search Box And Input Box Stylling */
 .search {
     width: 35%;
 }
-
 .search input {
     width: 75%;
     color: white;
@@ -50,6 +45,9 @@ body{
     border: 1px solid black;
     border-radius: 40px 0 0 40px;
     background-color: transparent;
+}
+.search input:focus{
+    outline: none;
 }
 .search button {
     padding: 14px;
@@ -59,13 +57,28 @@ body{
     border: 1px solid black;
     border-radius: 0 40px 40px 0;
 }
-
 ::placeholder {
     color: rgb(192, 189, 189);
     opacity: 1;
 }
 
-.container{
+/* FavourtieLiest Sidebar Stylling */
+.favoutieitembox{
+    background: rgba(218, 82, 82, 0.6);
+    justify-content: center;
+    position:fixed;
+    overflow-x: hidden;
+    overflow-y: auto;
+    top: 76px;
+    right: 0;
+    width: 0;
+    height: 92%;
+    z-index:1;
+    transition: 0.5s ease-in-out;
+}
+
+/* Meal Body Stylling Start */
+.mealbox{
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -83,23 +96,16 @@ body{
     width: 100%;
     height: 100%;
 }
-
+/* Meal Name stylling */
 .heading{
     position: absolute;
     padding: 10px;
-    bottom: 70px;
+    bottom: 62px;
     background: rgba(0, 0, 0, 0.5);
     color: #f1f1f1;
     width: 100%;
 }
-.detail{
-    display: none;
-    transition: 1s;
-}
-.box:hover .detail{
-    display: block;
-   
-}
+
 .button-box{
     display: flex;
     margin: 5px;
@@ -119,10 +125,98 @@ body{
     font-size: 1.5rem;
     border-radius: 50%;
 }
-/* .icon:hover{
-    font-size: 2rem;
-} */
 .btn:hover{
     background-color: #a44848;
     color: antiquewhite;
 }
+
+/* meal Detail Pop-up Stylling */
+.mealdetail{
+    display: none;
+    position: fixed;
+    top: 83px;
+    left: 100px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    color: white;
+    background-color: #a44848;
+    text-align: center;
+    width: 85%;
+    height: 85%;
+    padding: 45px;
+    z-index: 2;
+}
+.mealdetail img{
+    width: 85%;
+    height: 500px;
+    padding: 20px;
+}
+.crossbut{
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 1.5rem;
+    color: black;
+    background-color: white;
+    border-radius: 50%;
+}
+.video-btn{
+    padding: 5px;
+    background: #f7e9e9;
+    border: 0;
+    border-radius: 5px;
+}
+.video-btn a{
+    text-decoration: none;
+    color: black;
+    font-weight: 700;
+}
+.text{
+    padding: 5px;
+}
+.para{
+    color: rgba(231, 223, 223, 0.714);
+}
+/* favouriteBox Stylling Start */
+.favbox{
+    width: 90%;
+    height: 370px;
+    text-align: center;
+    margin: 15px;
+    padding: 0px;
+    background-color: #a47545;
+}
+.favbox img{
+    width: 80%;
+    height: 70%;
+    border-radius: 50%;
+}
+.favheading{
+    padding: 5px;
+    color: #f1f1f1;
+    width: 100%;
+}
+/* width */
+body ::-webkit-scrollbar {
+    width: 0px;
+  }
+::-webkit-scrollbar {
+    width: 5px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey; 
+    border-radius: 10px;
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: red; 
+    border-radius: 10px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #b30000; 
+  }

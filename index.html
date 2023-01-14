@@ -6,10 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+
     <link rel="stylesheet" href="style.css">
     <title>Meal Apk</title>
 </head>
-
 <body>
     <!-- Header section start -->
     <header class="header">
@@ -21,90 +21,19 @@
         <!-- Search -->
         <div class="search">
             <input type="text" placeholder="Search Meal">
-            <!-- <i class="cross uil uil-times"></i> -->
-            <button><i class="uil uil-search"></i></button>
+            <button id="searchbutton" ><i class="uil uil-search"></i></button>
         </div>
         <!-- Favorite icon -->
-        <div class="headericon">
+        <div class="favouriteibutton">
             <i class="icon uil uil-heart-alt"></i>
         </div>
     </header>
-    <div class="sidebar"></div>
-
-    <section class="container">
-       
-        <!-- <div class="box">
-            <img class="img" src="image/anh-nguyen-kcA-c3f_3FE-unsplash.jpg" alt="image">
-            <div class="heading">
-                <h1>Hello</h1>
-                <p class="detail">Lorem ipsum dolor sit amet consectetur, adipisicing elit.</p>
-            </div>
-            <div class="button-box">
-                <button class="btn button"> View Details</button>
-                <button class="btn icon favourite "><i class="uil uil-heart-medical"></i></button>
-            </div>
-        </div> -->
-
-        <!-- tem start -->
-        <!-- <div class="box">
-            <img class="img" src="image/anh-nguyen-kcA-c3f_3FE-unsplash.jpg" alt="image">
-            <div class="heading">
-                <h1>Hello</h1>
-                <p class="detail">Lorem ipsum dolor sit amet consectetur, adipisicing elit.</p>
-            </div>
-            <div class="button-box">
-                <button class="btn button"> View Details</button>
-                <button class="btn icon favourite"><i class="uil uil-heart-medical"></i></button>
-            </div>
-        </div>
-        <div class="box">
-            <img class="img" src="image/anh-nguyen-kcA-c3f_3FE-unsplash.jpg" alt="image">
-            <div class="heading">
-                <h1>Hello</h1>
-                <p class="detail">Lorem ipsum dolor sit amet consectetur, adipisicing elit.</p>
-            </div>
-            <div class="button-box">
-                <button class="btn button"> View Details</button>
-                <button class="btn icon favourite"><i class="uil uil-heart-medical"></i></button>
-            </div>
-        </div>
-        <div class="box">
-            <img class="img" src="image/anh-nguyen-kcA-c3f_3FE-unsplash.jpg" alt="image">
-            <div class="heading">
-                <h1>Hello</h1>
-                <p class="detail">Lorem ipsum dolor sit amet consectetur, adipisicing elit.</p>
-            </div>
-            <div class="button-box">
-                <button class="btn button"> View Details</button>
-                <button class="btn icon favourite"><i class="uil uil-heart-medical"></i></button>
-            </div>
-        </div>
-        <div class="box">
-            <img class="img" src="image/anh-nguyen-kcA-c3f_3FE-unsplash.jpg" alt="image">
-            <div class="heading">
-                <h1>Hello</h1>
-                <p class="detail">Lorem ipsum dolor sit amet consectetur, adipisicing elit.</p>
-            </div>
-            <div class="button-box">
-                <button class="btn button"> View Details</button>
-                <button class="btn icon favourite"><i class="uil uil-heart-medical"></i></button>
-            </div>
-        </div>
-        <div class="box">
-            <img class="img" src="image/anh-nguyen-kcA-c3f_3FE-unsplash.jpg" alt="image">
-            <div class="heading">
-                <h1>Hello</h1>
-                <p class="detail">Lorem ipsum dolor sit amet consectetur, adipisicing elit.</p>
-            </div>
-            <div class="button-box">
-                <button class="btn button"> View Details</button>
-                <button class="btn icon favourite"><i class="uil uil-heart-medical"></i></button>
-            </div>
-        </div> -->
-        <!-- tem end -->
-
-    </section>
-    <script src="Script.js"></script>
+    <!-- There is store all meals from Api -->
+    <section class="mealbox"></section>
+    <!-- These pop-up window for store Paticular meal -->
+    <div class="mealdetail"></div>
+    <!-- These Slide Window store Favorite Meal  -->
+    <div class="favoutieitembox"></div>
+    <script src="index.js"></script>
 </body>
-
 </html>
