@@ -3,8 +3,15 @@ const searchMeal = document.querySelector('.search input');//Search box value
 const mealDetails = document.querySelector('.mealdetail');//Meal details window
 const mealBox = document.querySelector('.mealbox');//MealList Container 
 const favoriteBox = document.querySelector('.favoutieitembox');//Favorite list container
+const logo=document.querySelector('.logo');//Select Page Header-Logo
 
 // OnClick-Event
+
+//When You click on logo reset homepage.
+logo.onclick=()=>{
+    mealBox.innerHTML="";
+    searchMeal.value="";
+}
 // When click on Search button getMealList function call
 document.getElementById('searchbutton').onclick = () => {
     mealBox.innerHTML='';
@@ -27,7 +34,7 @@ async function fetchMealsFromApi(url, value) {
     return meals;
 }
 
-
+// Create Meal By the help of getMeal function 
 function getMeal() {
     let value = searchMeal.value.trim();
     let url = "https://www.themealdb.com/api/json/v1/1/search.php?s=";
@@ -76,6 +83,7 @@ function getMeal() {
     })
 }
 
+// Create Meal Detail page by the help of getMealDetail function
 function getMealDetail(meal) {
     // create the required elemnts for Details
     const detailBox = document.createElement('div');
@@ -129,6 +137,7 @@ function getMealDetail(meal) {
     mealDetails.style.display = "block";
 }
 
+// Add meal in favorite list by the help of favoriteListAdd function
 function favoriteListAdd(meal) {
     // create the required elemnts for Details
     const favouriteBoxDiv = document.createElement('div');
@@ -170,6 +179,7 @@ function favoriteListAdd(meal) {
             favoriteBox.style.width = "0";
             console.log("Enter")
         }
+        // setTime out for delay 0.5s alert when item remove your list
         setTimeout(() => {
             alert(`${meal.strMeal} Susecfull Remove From Your List`)
           }, 500)
