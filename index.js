@@ -20,9 +20,12 @@ document.getElementById('searchbutton').onclick = () => {
 // When click on Favourite icon Show favourite list
 favoriteButton.onclick = () => {
     if (favoriteBox.innerText=="") {
-        alert('Favourite List Empty\nPlz Add item in List');
+        alert("Opps Your List is Empty");
+    }
+    else if (favoriteBox.style.width=="25%") {
         favoriteBox.style.width = "0";
-    } else {
+    } 
+    else {
         favoriteBox.style.width = '25%';
     }
 }
