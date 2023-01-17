@@ -3,31 +3,85 @@ const searchMeal = document.querySelector('.search input');//Search box value
 const mealDetails = document.querySelector('.mealdetail');//Meal details window
 const mealBox = document.querySelector('.mealbox');//MealList Container 
 const favoriteBox = document.querySelector('.favoutieitembox');//Favorite list container
-const logo=document.querySelector('.logo');//Select Page Header-Logo
-
+const logo = document.querySelector('.logo');//Select Page Header-Logo
+const popup = document.querySelector('.alert');
 // OnClick-Event
 
 //When You click on logo reset homepage.
-logo.onclick=()=>{
-    mealBox.innerHTML="";
-    searchMeal.value="";
-}
-// When click on Search button getMealList function call
-document.getElementById('searchbutton').onclick = () => {
-    mealBox.innerHTML='';
-    getMeal();
+logo.onclick = () => {
+    mealBox.innerHTML = "";
+    searchMeal.value = "";
 }
 // When click on Favourite icon Show favourite list
 favoriteButton.onclick = () => {
-    if (favoriteBox.innerText=="") {
-        alert("Opps Your List is Empty");
+    if (favoriteBox.innerText == "") {
+        alert("Opps your list is Empty")
     }
-    else if (favoriteBox.style.width=="25%") {
+    else if (favoriteBox.style.width == "25%") {
         favoriteBox.style.width = "0";
-    } 
+    }
     else {
         favoriteBox.style.width = '25%';
     }
+}
+
+// Alert function for perform opration
+function popupwindow(text, meal,favouriteBoxDiv ) {
+    // create the required elemnts
+    const popupdiv = document.createElement('div');
+    const popupcircle = document.createElement('div');
+    const questionmark = document.createElement('i');
+    const popupheading = document.createElement('h1');
+    const popuppara = document.createElement('p');
+    const popupokbutton = document.createElement('button');
+    const popupcancelbutton = document.createElement('button');
+
+    // add the required classes
+    popupdiv.classList.add('alert-box');
+    popupcircle.classList.add('circle');
+    questionmark.classList.add('uil', 'uil-question', 'icon-pop1');
+    popupokbutton.classList.add('btn1');
+    popupcancelbutton.classList.add('btn1');
+
+    // add parent-child relationship
+    popupdiv.appendChild(popupcircle);
+    popupcircle.appendChild(questionmark);
+    popupdiv.appendChild(popupheading);
+    popupdiv.appendChild(popuppara);
+    popupdiv.appendChild(popupokbutton);
+    popupdiv.appendChild(popupcancelbutton);
+
+    popup.appendChild(popupdiv)
+
+    // add the contenets
+    popupheading.innerText = text;
+    popuppara.innerText = `You Want to ${text} ${meal.strMeal} in Your Favorite-List`;
+    popupokbutton.innerText = "Ok";
+    popupcancelbutton.innerText = "Cancel";
+    if (text=='Added') {
+        popupcircle.style.background="#20a8219e";
+    }
+
+    //add Event Lisner
+    popupokbutton.onclick = () => {
+        if (text == "Added") {
+            
+            popup.style.display = "none";
+            favoriteListAdd(meal);
+        }
+        else {
+            popup.style.display = "none";
+            favoriteBox.removeChild(favouriteBoxDiv);
+            if (favoriteBox.innerText == "") {
+                favoriteBox.style.width = "0";
+            } 
+        } 
+        popup.innerHTML="";   
+    }
+    popupcancelbutton.onclick = () => {
+        popup.style.display = "none";
+        popup.innerHTML="";
+    }   
 }
 
 // Fecth Meal Api by url
@@ -36,9 +90,9 @@ async function fetchMealsFromApi(url, value) {
     const meals = await response.json();
     return meals;
 }
-
 // Create Meal By the help of getMeal function 
 function getMeal() {
+    mealBox.innerHTML = '';
     let value = searchMeal.value.trim();
     let url = "https://www.themealdb.com/api/json/v1/1/search.php?s=";
     let meals = fetchMealsFromApi(url, value);
@@ -59,7 +113,7 @@ function getMeal() {
             mealHeading.classList.add('heading');
             mealButtonDiv.classList.add('button-box');
             mealDetailButton.classList.add('btn');
-            mealRemoveButton.classList.add('btn','icon');
+            mealRemoveButton.classList.add('btn', 'icon');
             mealFavouriteIcon.classList.add('uil', 'uil-heart-medical');
 
             // add parent-child relationship
@@ -69,19 +123,22 @@ function getMeal() {
             mealButtonDiv.appendChild(mealDetailButton);
             mealButtonDiv.appendChild(mealRemoveButton);
             mealRemoveButton.appendChild(mealFavouriteIcon);
-            
+
             // add the contenets
             mealCardDiv.setAttribute('data-id', meal.idMeal);
             mealImg.setAttribute('src', meal.strMealThumb);
             mealHeading.innerText = meal.strMeal;
             mealDetailButton.innerHTML = 'View Detail';
-            
+
             //Final Child Append in mealBox
             mealBox.appendChild(mealCardDiv);
 
             //onEventLisner
-            mealDetailButton.addEventListener('click',()=>{getMealDetail(meal)});
-            mealFavouriteIcon.addEventListener('click',()=>{favoriteListAdd(meal)});
+            mealDetailButton.addEventListener('click', () => { getMealDetail(meal) });
+            mealFavouriteIcon.addEventListener('click', () => {
+                popup.style.display = "flex";
+                popupwindow('Added', meal);
+            });
         });
     })
 }
@@ -101,25 +158,25 @@ function getMealDetail(meal) {
     const detailVideoLinkTag = document.createElement('a');
 
     // add the required classes and Attribute
-    detailCrossIcon.classList.add('crossbut','icon','uil','uil-times');
+    detailCrossIcon.classList.add('crossbut', 'icon', 'uil', 'uil-times');
     detailHeading.classList.add('text');
-    detailCategory.classList.add('text','para');
+    detailCategory.classList.add('text', 'para');
     detailInstruction.classList.add('text');
-    detailParagraph.classList.add('text','para');
+    detailParagraph.classList.add('text', 'para');
     detailImage.classList.add('img');
     detailVideoButton.classList.add('video-btn');
-    detailImage.setAttribute('src',meal.strMealThumb);
-    detailVideoLinkTag.setAttribute('href',meal.strYoutube);
+    detailImage.setAttribute('src', meal.strMealThumb);
+    detailVideoLinkTag.setAttribute('href', meal.strYoutube);
 
     // add the contenets
-    detailHeading.innerText="Name- "+meal.strMeal;
-    detailCategory.innerText="Categoty- "+meal.strCategory;
-    detailInstruction.innerText="Instruction";
-    detailParagraph.innerText=meal.strInstructions;
-    detailVideoLinkTag.innerText="Watch Video";
-    
+    detailHeading.innerText = "Name- " + meal.strMeal;
+    detailCategory.innerText = "Categoty- " + meal.strCategory;
+    detailInstruction.innerText = "Instruction";
+    detailParagraph.innerText = meal.strInstructions;
+    detailVideoLinkTag.innerText = "Watch Video";
+
     //add event lisner
-    detailCrossIcon.addEventListener('click',()=>{
+    detailCrossIcon.addEventListener('click', () => {
         mealDetails.removeChild(detailBox);
         mealDetails.style.display = "none";
 
@@ -135,7 +192,7 @@ function getMealDetail(meal) {
     detailBox.appendChild(detailButtonDiv);
     detailButtonDiv.appendChild(detailVideoButton);
     detailVideoButton.appendChild(detailVideoLinkTag);
-    
+
     mealDetails.appendChild(detailBox);
     mealDetails.style.display = "block";
 }
@@ -152,17 +209,17 @@ function favoriteListAdd(meal) {
 
     //add Class in element 
     favouriteBoxDiv.classList.add('favbox');
-    favouriteBoxDiv.setAttribute('data-id',meal.idMeal);
+    favouriteBoxDiv.setAttribute('data-id', meal.idMeal);
     favouriteHeading.classList.add('favheading');
-    favouriteImage.setAttribute('src',meal.strMealThumb);
+    favouriteImage.setAttribute('src', meal.strMealThumb);
     favorurteButtonBox.classList.add('button-box');
-    favouriteDetailButton.classList.add('btn','button');
-    favoriteRemoveButton.classList.add('btn','button');
+    favouriteDetailButton.classList.add('btn', 'button');
+    favoriteRemoveButton.classList.add('btn', 'button');
 
     //add the contents
-    favouriteHeading.innerText=meal.strMeal;
-    favouriteDetailButton.innerText="View Detail";
-    favoriteRemoveButton.innerText="Remove";
+    favouriteHeading.innerText = meal.strMeal;
+    favouriteDetailButton.innerText = "View Detail";
+    favoriteRemoveButton.innerText = "Remove";
 
     //add parent-child relationship
     favouriteBoxDiv.appendChild(favouriteHeading);
@@ -170,23 +227,15 @@ function favoriteListAdd(meal) {
     favouriteBoxDiv.appendChild(favorurteButtonBox);
     favorurteButtonBox.appendChild(favouriteDetailButton);
     favorurteButtonBox.appendChild(favoriteRemoveButton);
-    favoriteBox.appendChild(favouriteBoxDiv)
-    setTimeout(() => {
-        alert(`${meal.strMeal} Susecfully Added In Your Favorite-List`)
-      }, 300)
-    //add Event lisner
-    favouriteDetailButton.addEventListener('click',()=>{getMealDetail(meal);});
-    favoriteRemoveButton.addEventListener('click',()=>{ 
-        favoriteBox.removeChild(favouriteBoxDiv);
-        if (favoriteBox.innerText=="") {
+    favoriteBox.appendChild(favouriteBoxDiv);
+
+    //Event Listner on Button
+    favouriteDetailButton.addEventListener('click', () => { getMealDetail(meal); });
+    favoriteRemoveButton.addEventListener('click', () => {
+        popup.style.display = "flex";
+        popupwindow('Remove', meal,favouriteBoxDiv );
+        if (favoriteBox.innerText == "") {
             favoriteBox.style.width = "0";
-            console.log("Enter")
         }
-        // setTime out for delay 0.5s alert when item remove your list
-        setTimeout(() => {
-            alert(`${meal.strMeal} Susecfull Remove From Your List`)
-          }, 500)
-        
     });
-    
 }

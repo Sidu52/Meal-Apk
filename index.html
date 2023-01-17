@@ -19,9 +19,8 @@
             <span>Meal App</span>
         </div>
         <!-- Search -->
-        <div class="search">
-            <input type="text" placeholder="Search Meal">
-            <button id="searchbutton" ><i class="uil uil-search"></i></button>
+        <div class="search" onkeyup="getMeal()">
+            <input type="search" placeholder="Search Meal">
         </div>
         <!-- Favorite icon -->
         <div class="favouriteibutton">
@@ -30,6 +29,9 @@
     </header>
     <!-- There is store all meals from Api -->
     <section class="mealbox"></section>
+    <div class="alert">
+        
+    </div>
     <!-- These pop-up window for store Paticular meal -->
     <div class="mealdetail"></div>
     <!-- These Slide Window store Favorite Meal  -->
