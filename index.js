@@ -65,7 +65,6 @@ function popupwindow(text, meal,favouriteBoxDiv ) {
     //add Event Lisner
     popupokbutton.onclick = () => {
         if (text == "Added") {
-            
             popup.style.display = "none";
             favoriteListAdd(meal);
         }
