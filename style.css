@@ -233,6 +233,7 @@ body ::-webkit-scrollbar {
     padding-bottom: 15px;
     top: 200px;
     border-radius: 20px;
+    z-index:3;
 }
 .circle{
     width: 80px;
